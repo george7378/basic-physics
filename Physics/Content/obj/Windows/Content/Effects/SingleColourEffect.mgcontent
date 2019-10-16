@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Victor/Documents/Visual Studio 2017/Projects/PhysicsStripped/PhysicsStripped/Physics/Content/Effects/SingleColourEffect.fx</SourceFile>
+  <SourceTime>2019-10-16T00:01:06.5912946+01:00</SourceTime>
+  <DestFile>C:/Users/Victor/Documents/Visual Studio 2017/Projects/PhysicsStripped/PhysicsStripped/Physics/Content/bin/Windows/Content/Effects/SingleColourEffect.xnb</DestFile>
+  <DestTime>2019-10-16T00:03:19.8931655+01:00</DestTime>
+  <Importer>EffectImporter</Importer>
+  <ImporterTime>2018-12-08T16:35:54+00:00</ImporterTime>
+  <Processor>EffectProcessor</Processor>
+  <ProcessorTime>2018-12-08T16:35:54+00:00</ProcessorTime>
+  <Parameters>
+    <Key>DebugMode</Key>
+    <Value>Auto</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

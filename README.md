@@ -3,4 +3,4 @@ Basic Physics is a very simple rigid body physics simulation, designed to show t
 
 The simulation shows a symmetrical cube falling under gravity, and interacting with a flat plane. The collisions are handled using a 'penalty method', which allows for easy modelling of impacts and friction.
 
-![Cube falling under gravity](https://raw.githubusercontent.com/george7378/basic-physics/master/_img/1.png)
+![Cube falling under gravity](https://github.com/george7378/basic-physics/blob/master/_img/1.png)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Effects/ShadowMapEffect.fx</File>
+    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Effects/SingleColourEffect.fx</File>
+    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Cube.x</File>
+    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Plane.x</File>
+    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Plank.x</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Effects/ShadowMapEffect.fx</File>
+    <File>Effects/SingleColourEffect.fx</File>
+    <File>Models/Cube.x</File>
+    <File>Models/Plane.x</File>
+    <File>Models/Plank.x</File>
+  </DestFiles>
+</SourceFileCollection>

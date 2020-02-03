@@ -4,11 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Effects/ShadowMapEffect.fx</File>
-    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Effects/SingleColourEffect.fx</File>
-    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Cube.x</File>
-    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Plane.x</File>
-    <File>C:/Users/Victor/Desktop/BasicPhysics/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Plank.x</File>
+    <File>C:/Users/Victor/Desktop/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Effects/ShadowMapEffect.fx</File>
+    <File>C:/Users/Victor/Desktop/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Effects/SingleColourEffect.fx</File>
+    <File>C:/Users/Victor/Desktop/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Cube.x</File>
+    <File>C:/Users/Victor/Desktop/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Plane.x</File>
+    <File>C:/Users/Victor/Desktop/basic-physics/PhysicsWindows/Content/../../PhysicsCore/Content/Models/Plank.x</File>
   </SourceFiles>
   <DestFiles>
     <File>Effects/ShadowMapEffect.fx</File>

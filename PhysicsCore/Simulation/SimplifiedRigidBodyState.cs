@@ -2,7 +2,7 @@
 
 namespace PhysicsCore.Simulation
 {
-    public class RigidBodySimplifiedState
+    public class SimplifiedRigidBodyState
     {
         #region Properties
 

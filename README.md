@@ -1,5 +1,5 @@
 # basic-physics
-> Take a look at [this Android app](https://play.google.com/store/apps/details?id=kristianseng.swingball) for another fun demo of this project.
+> Take a look at [this Android app](https://play.google.com/store/apps/details?id=kristianseng.swingball) for another fun demo of this project, and my [lunar landing simulator](https://play.google.com/store/apps/details?id=kristianseng.perilune) which shows it being applied to an arbitrary 3D terrain mesh.
 
 Basic Physics is an introductory rigid body physics simulation, designed to show a clean example of the minimal code for 3D dynamics. It uses MonoGame for graphical rendering.
 

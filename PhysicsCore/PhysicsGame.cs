@@ -14,6 +14,21 @@ namespace PhysicsCore
 
         private const int ShadowMapSize = 1024;
 
+        /// <summary>
+        /// A little offset to make sure objects don't sink into the floor when resting.
+        /// </summary>
+        private const float CollisionBias = 0.004f;
+
+        /// <summary>
+        /// A dimensionless measure of how hard the floor pushes against the objects.
+        /// </summary>
+        private const float ReactionForceMultiplier = 100;
+
+        /// <summary>
+        /// A dimensionless measure of how much friction the floor applies to the objects.
+        /// </summary>
+        private const float FrictionForceMultiplier = 5;
+
         #endregion
 
         #region Fields
@@ -23,7 +38,7 @@ namespace PhysicsCore
         private DirectionLight _light;
 
         private RigidBody _plankRigidBody;
-        private RigidBodySimplified _cubeRigidBody;
+        private SimplifiedRigidBody _cubeRigidBody;
 
         private Vector3 _cameraPosition;
         private Vector3 _gravity;
@@ -223,6 +238,12 @@ namespace PhysicsCore
 
         #region Misc.
 
+        /// <summary>
+        /// Currently each object falls under gravity and interacts with the flat floor using a basic collision algorithm.
+        /// The collisions consist of a reaction force which pushes away from the floor, and a friction force which dampens
+        /// motion. The collision forces are summed over each vertex which intersects with the floor.
+        /// You could add other interactions here - elastic springs, inter-object collision, explosions, push/pull forces...
+        /// </summary>
         private void UpdatePhysics(float timeDelta)
         {
             // Plank
@@ -233,12 +254,12 @@ namespace PhysicsCore
                 Vector3 vertexLocalPosition = Vector3.Transform(vertexPosition, _plankRigidBody.State.Orientation);
                 Vector3 vertexWorldPosition = _plankRigidBody.State.Position + vertexLocalPosition;
 
-                float penetrationDepth = 0.004f - vertexWorldPosition.Y;
+                float penetrationDepth = CollisionBias - vertexWorldPosition.Y;
                 if (penetrationDepth >= 0)
                 {
                     Vector3 collisionNormal = Vector3.UnitY;
                     Vector3 vertexVelocity = _plankRigidBody.State.Velocity + Vector3.Cross(_plankRigidBody.State.AngularVelocity, vertexLocalPosition);
-                    Vector3 vertexCollisionForce = _plankRigidBody.Mass*(100*collisionNormal*penetrationDepth - 5*vertexVelocity);
+                    Vector3 vertexCollisionForce = _plankRigidBody.Mass*(ReactionForceMultiplier*collisionNormal*penetrationDepth - FrictionForceMultiplier*vertexVelocity);
 
                     plankCollisionForce += vertexCollisionForce;
                     plankCollisionTorque += Vector3.Cross(vertexLocalPosition, vertexCollisionForce);
@@ -255,12 +276,12 @@ namespace PhysicsCore
                 Vector3 vertexLocalPosition = Vector3.Transform(vertexPosition, _cubeRigidBody.State.Orientation);
                 Vector3 vertexWorldPosition = _cubeRigidBody.State.Position + vertexLocalPosition;
 
-                float penetrationDepth = 0.004f - vertexWorldPosition.Y;
+                float penetrationDepth = CollisionBias - vertexWorldPosition.Y;
                 if (penetrationDepth >= 0)
                 {
                     Vector3 collisionNormal = Vector3.UnitY;
                     Vector3 vertexVelocity = _cubeRigidBody.State.Velocity + Vector3.Cross(_cubeRigidBody.State.AngularVelocity, vertexLocalPosition);
-                    Vector3 vertexCollisionForce = 100*collisionNormal*penetrationDepth - 5*vertexVelocity;
+                    Vector3 vertexCollisionForce = ReactionForceMultiplier*collisionNormal*penetrationDepth - FrictionForceMultiplier*vertexVelocity;
 
                     cubeCollisionForce += vertexCollisionForce;
                     cubeCollisionTorque += Vector3.Cross(vertexLocalPosition, vertexCollisionForce);
@@ -308,13 +329,18 @@ namespace PhysicsCore
                     AngularMomentum = new Vector3(5, 18, 18)
                 }
             };
+
+            // The plank requires an inertia tensor to be defined. This depends on mass and dimensions, and
+            // the formulation differs across object shapes. A good list for common shapes can be found here:
+            // https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors
+            // The plank uses the solid cuboid definition.
             Matrix plankBodyInertiaTensor = Matrix.Identity;
             plankBodyInertiaTensor[0, 0] = _plankRigidBody.Mass/12*(6*6 + 0.4f*0.4f);
             plankBodyInertiaTensor[1, 1] = _plankRigidBody.Mass/12*(6*6 + 2*2);
             plankBodyInertiaTensor[2, 2] = _plankRigidBody.Mass/12*(2*2 + 0.4f*0.4f);
             _plankRigidBody.InverseBodyInertiaTensor = Matrix.Invert(plankBodyInertiaTensor);
 
-            _cubeRigidBody = new RigidBodySimplified()
+            _cubeRigidBody = new SimplifiedRigidBody()
             {
                 BoundingVertices = new Vector3[]
                 {
@@ -327,7 +353,7 @@ namespace PhysicsCore
                     new Vector3(1, -1, -1),
                     new Vector3(-1, -1, -1)
                 },
-                State = new RigidBodySimplifiedState()
+                State = new SimplifiedRigidBodyState()
                 {
                     Position = new Vector3(0, 5, 0),
                     Velocity = new Vector3(0, 2, 1),

@@ -11,8 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)PhysicsGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Simulation\RigidBody.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Simulation\RigidBodySimplified.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Simulation\RigidBodySimplifiedState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Simulation\SimplifiedRigidBody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Simulation\SimplifiedRigidBodyState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Simulation\RigidBodyState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DirectionLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\Globals.cs" />

@@ -1,31 +1,45 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.779
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhysicsWindows", "PhysicsWindows\PhysicsWindows.csproj", "{4B7CBA9B-127D-415F-9CE3-3157D9D2B9A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseDemoWindows", "BaseDemoWindows\BaseDemoWindows.csproj", "{4B950880-F3DE-432E-9185-72D4A7F00DC2}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PhysicsCore", "PhysicsCore\PhysicsCore.shproj", "{A0CDBD0E-3A41-42B7-9425-A838BC2C7383}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PhysicsCore", "PhysicsCore\PhysicsCore.shproj", "{83D4EB08-1F7D-433A-88D0-1BADA75D31B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeightlessWindows", "WeightlessWindows\WeightlessWindows.csproj", "{4677D8C0-C472-4D0F-BE03-0A0A06D615C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntermediateAxisWindows", "IntermediateAxisWindows\IntermediateAxisWindows.csproj", "{FAA40A4D-98B3-4C28-B057-8F137BE330B3}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		PhysicsCore\PhysicsCore.projitems*{4b7cba9b-127d-415f-9ce3-3157d9d2b9a3}*SharedItemsImports = 4
-		PhysicsCore\PhysicsCore.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4B7CBA9B-127D-415F-9CE3-3157D9D2B9A3}.Debug|x86.ActiveCfg = Debug|x86
-		{4B7CBA9B-127D-415F-9CE3-3157D9D2B9A3}.Debug|x86.Build.0 = Debug|x86
-		{4B7CBA9B-127D-415F-9CE3-3157D9D2B9A3}.Release|x86.ActiveCfg = Release|x86
-		{4B7CBA9B-127D-415F-9CE3-3157D9D2B9A3}.Release|x86.Build.0 = Release|x86
+		{4B950880-F3DE-432E-9185-72D4A7F00DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B950880-F3DE-432E-9185-72D4A7F00DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B950880-F3DE-432E-9185-72D4A7F00DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B950880-F3DE-432E-9185-72D4A7F00DC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4677D8C0-C472-4D0F-BE03-0A0A06D615C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4677D8C0-C472-4D0F-BE03-0A0A06D615C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4677D8C0-C472-4D0F-BE03-0A0A06D615C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4677D8C0-C472-4D0F-BE03-0A0A06D615C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA40A4D-98B3-4C28-B057-8F137BE330B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA40A4D-98B3-4C28-B057-8F137BE330B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA40A4D-98B3-4C28-B057-8F137BE330B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA40A4D-98B3-4C28-B057-8F137BE330B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {57667C21-FD92-4378-A3E4-B1DCCEB0D85F}
+		SolutionGuid = {1A2A160F-DA65-499E-9D7D-CFBA91888C2A}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		PhysicsCore\PhysicsCore.projitems*{4677d8c0-c472-4d0f-be03-0a0a06d615c3}*SharedItemsImports = 5
+		PhysicsCore\PhysicsCore.projitems*{4b950880-f3de-432e-9185-72d4a7f00dc2}*SharedItemsImports = 5
+		PhysicsCore\PhysicsCore.projitems*{83d4eb08-1f7d-433a-88d0-1bada75d31b7}*SharedItemsImports = 13
+		PhysicsCore\PhysicsCore.projitems*{faa40a4d-98b3-4c28-b057-8f137be330b3}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

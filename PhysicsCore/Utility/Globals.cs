@@ -4,6 +4,15 @@ namespace PhysicsCore.Utility
 {
     public static class Globals
     {
+        #region Constants
+
+        /// <summary>
+        /// Split each physics timestep into smaller sub-steps to increase accuracy.
+        /// </summary>
+        public const int PhysicsTimestepSubdivisionCount = 20;
+
+        #endregion
+
         #region Standalone methods
 
         public static Matrix SkewSymmetricMatrix(Vector3 vector)
@@ -35,6 +44,11 @@ namespace PhysicsCore.Utility
             result.Right = right;
 
             return result;
+        }
+
+        public static float PointPlaneDistance(Vector3 point, Plane plane)
+        {
+            return Vector3.Dot(point, plane.Normal) - plane.D;
         }
 
         #endregion

@@ -3,18 +3,21 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>1bb904a4-aba6-4e63-b1e0-607472310fa5</SharedGUID>
+    <SharedGUID>6efba8a9-a407-4029-bdd0-651d22a87386</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>PhysicsCore</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)PhysicsGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IntermediateAxisGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BaseDemoGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WeightlessGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Simulation\RigidBody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Simulation\RigidBodyState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Simulation\SimplifiedRigidBody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Simulation\SimplifiedRigidBodyState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Simulation\RigidBodyState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DirectionLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\Globals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\PointLight.cs" />
   </ItemGroup>
 </Project>

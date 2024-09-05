@@ -1,10 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using PhysicsCore.Utility;
 
 namespace PhysicsCore.Simulation
 {
     public class SimplifiedRigidBody
     {
+        #region Visual only (these don't affect the physics)
+
+        public Model Model { get; set; }
+
+        public Color Colour { get; set; }
+
+        public Matrix ScaleMatrix { get; set; }
+
+        #endregion
+
         #region Properties
 
         public Vector3[] BoundingVertices { get; set; }
@@ -22,13 +33,17 @@ namespace PhysicsCore.Simulation
         /// </summary>
         public void ApplyPhysics(Vector3 acceleration, Vector3 angularAcceleration, float timeDelta)
         {
-            State.Position += State.Velocity*timeDelta;
-            State.Velocity += acceleration*timeDelta;
+            float dt = timeDelta/Globals.PhysicsTimestepSubdivisionCount;
+            for (int i = 0; i < Globals.PhysicsTimestepSubdivisionCount; i++)
+            {
+                State.Position += State.Velocity*dt;
+                State.Velocity += acceleration*dt;
 
-            State.Orientation += Matrix.Transpose(Globals.SkewSymmetricMatrix(State.AngularVelocity)*Matrix.Transpose(State.Orientation))*timeDelta;
-            State.Orientation = Globals.OrthonormaliseMatrix(State.Orientation);
+                State.Orientation += Matrix.Transpose(Globals.SkewSymmetricMatrix(State.AngularVelocity)*Matrix.Transpose(State.Orientation))*dt;
+                State.Orientation = Globals.OrthonormaliseMatrix(State.Orientation);
 
-            State.AngularVelocity += angularAcceleration*timeDelta;
+                State.AngularVelocity += angularAcceleration*dt;
+            }
         }
 
         #endregion

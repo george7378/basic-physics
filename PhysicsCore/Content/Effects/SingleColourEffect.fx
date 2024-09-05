@@ -13,31 +13,17 @@
 ////////////////////
 float4x4 World;
 float4x4 WorldViewProjection;
-float4x4 LightWorldViewProjection;
 
 float LightPower;
 float AmbientLightPower;
-float ShadowMapSize;
+float LightAttenuation;
+float SpecularExponent;
 
-float3 LightDirection;
+float3 CameraPosition;
+float3 LightPosition;
+
 float3 BaseColour;
-
-Texture ShadowMapTexture;
-
-
-//////////////////
-//Sampler states//
-//////////////////
-sampler ShadowMapTextureSampler = sampler_state
-{
-	texture = <ShadowMapTexture>;
-	magfilter = LINEAR;
-	minfilter = LINEAR;
-	mipfilter = LINEAR;
-	AddressU = Border;
-	AddressV = Border;
-	BorderColor = 0xffffffff;
-};
+float3 SpecularColour;
 
 
 //////////////////
@@ -51,9 +37,9 @@ struct VertexShaderInput
 
 struct VertexShaderOutput
 {
-	float4 Position               : POSITION0;
-	float3 Normal                 : TEXCOORD0;
-	float4 ProjectedPositionLight : TEXCOORD1;
+	float4 Position      : POSITION0;
+	float3 Normal        : TEXCOORD0;
+	float4 PositionWorld : TEXCOORD1; // float4 to keep optimiser happy
 };
 
 
@@ -66,34 +52,22 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 	output.Position = mul(input.Position, WorldViewProjection);
 	output.Normal = normalize(mul(input.Normal, (float3x3)World));
-	output.ProjectedPositionLight = mul(input.Position, LightWorldViewProjection);
+	output.PositionWorld = mul(input.Position, World);
 
 	return output;
 }
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
-	float diffuseLightingFactor = saturate(dot(-LightDirection, input.Normal))*LightPower;
+	float3 lightVector = input.PositionWorld.xyz - LightPosition;
+	float lightAttenuationMultiplier = saturate(1.0f - length(lightVector)/LightAttenuation);
+	float diffuseLightingFactor = saturate(dot(-normalize(lightVector), input.Normal))*lightAttenuationMultiplier*LightPower;
 
-	float2 projectedTextureCoordinatesLight;
-	projectedTextureCoordinatesLight.x = (input.ProjectedPositionLight.x/input.ProjectedPositionLight.w + 1.0f)/2.0f;
-	projectedTextureCoordinatesLight.y = (-input.ProjectedPositionLight.y/input.ProjectedPositionLight.w + 1.0f)/2.0f;
-	
-	int shadowFactor = 0;
-	for (int y = -1; y <= 1; y++)
-	{
-		for (int x = -1; x <= 1; x++)
-		{
-			float2 shadowSampleOffset = float2(x/ShadowMapSize, y/ShadowMapSize);
-			if (tex2D(ShadowMapTextureSampler, projectedTextureCoordinatesLight + shadowSampleOffset).r < input.ProjectedPositionLight.z - 0.002f)
-			{
-				shadowFactor += 1;
-			}
-		}
-	}
-	diffuseLightingFactor *= 1.0f - shadowFactor/9.0f;
+	float3 cameraVector = normalize(CameraPosition - input.PositionWorld.xyz);
+	float3 reflectionVector = normalize(reflect(lightVector, input.Normal));
+	float specularLightingFactor = pow(saturate(dot(reflectionVector, cameraVector)), SpecularExponent)*lightAttenuationMultiplier;
 
-	float4 finalColour = float4(BaseColour*(AmbientLightPower + diffuseLightingFactor), 1.0f);
+	float4 finalColour = float4(BaseColour*(AmbientLightPower + diffuseLightingFactor) + SpecularColour*specularLightingFactor, 1.0f);
 
 	return finalColour;
 }

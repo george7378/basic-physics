@@ -1,11 +1,13 @@
 # basic-physics
-> Take a look at [this Android app](https://play.google.com/store/apps/details?id=kristianseng.swingball) for another fun demo of this project, and my [lunar landing simulator](https://play.google.com/store/apps/details?id=kristianseng.perilune) which shows it being applied to an arbitrary 3D terrain mesh. I've also made a [demo game concept](https://github.com/george7378/bazookoids) with driving physics and more complex collisions.
+> Take a look at [this Android app](https://play.google.com/store/apps/details?id=kristianseng.swingball) for another fun demo of this project, and my [lunar landing simulator](https://play.google.com/store/apps/details?id=kristianseng.perilune) which shows it being applied to a 3D terrain mesh. I've also made a [demo game concept](https://github.com/george7378/bazookoids) with driving physics and more complex collisions.
 
 Basic Physics is an introductory rigid body physics simulation, meant to show a clean example of the minimal code for 3D rigid body dynamics. It uses MonoGame for graphical rendering.
 
-There are two slightly different rigid body models included. The first is the most flexible, as it lets you to define a mass and inertia tensor for each object. The second model is stripped back to simulate symmetrical objects only, such as cubes and spheres. Mass is assumed to be 1 and the inertia tensor is assumed to be an identity matrix. This makes the maths simpler, and reduces the amount of information required to define a new object.
+It includes two slightly different rigid body models:
+* The first is the most flexible and lets you define a mass and inertia tensor for each object.
+* The second is stripped back to simulate symmetrical objects only, such as cubes and spheres. Mass is assumed to be 1 and the inertia tensor is assumed to be an identity matrix, which makes defining new objects easier.
 
-The project is organised with the core platform-independent code in the **PhysicsCore** folder. Everything relevant to the physics simulation is defined here, and can be re-used across systems by adding a relevant MonoGame platform project to the solution. There are also some demo programs, each in their own platform-specific project folder:
+The repo is organised with the core platform-independent code in the **PhysicsCore** folder. Everything relevant to the physics simulation is defined here. This is referenced by the demo projects, each in their own platform-specific folder:
 
 ## Base demo
 
